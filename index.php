@@ -1,13 +1,29 @@
-<?php require "logica.php"; ?>
+<?php
+    session_start();
+    $_SESSION['atividades'][] = $_GET['atividade'];
+    $_SESSION['login'] =
+?>
 
-<html>
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form method="get" action="">
+        <input type="text" name="atividade" placeholder="Ex.:Lavar o Boby.">
+        <input type="submit" value="cadastrar">
+    </form>
 
-    <head></head>
+    <h2> Lista de Atividades: </h2>
 
-    <body>
-        <h1> Ola <?= "$tituloVisualizado $nome, $qualidadeVisualizada"; ?></h1>
-    </body>
+    <ol>
+        <?php foreach ($_SESSION['atividades'] as $ativ ): ?>
+            <li><?= $ativ ?></li>
+        <?php  endforeach; ?>
+    </ol>
 
-
+</body>
 </html>
 
